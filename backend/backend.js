@@ -6,16 +6,12 @@ const mongoose=require('mongoose')
 const {UserModel, TodoModel} = require("./db/db");
 const mongourl=process.env.MONGO_URL
 mongoose.connect(mongourl)
+const usercheck = require('./middleware/usercheck');
+const auth=require('./middleware/authentication')
 
 const app =express()
-const usercheck = require('./middleware/usercheck');
-const todorelation=require('./middleware/todorelation')
-
-
 app.use(express.json())
 app.use(express.static(path.join(__dirname, '../frontend')));
-
-
 
 
 
@@ -52,7 +48,7 @@ app.post("/signin",usercheck,async(req,res) =>{
 })
 
 
-app.post("/todo",todorelation,async(req,res) =>{
+app.post("/todo",auth,async(req,res) =>{
     const todo=req.body.todo
     const done=req.body.done
     const userid=req.userid
@@ -67,13 +63,35 @@ app.post("/todo",todorelation,async(req,res) =>{
 
 
 
-app.get("/todo",todorelation,async(req,res) =>{
+app.get("/todo",auth,async(req,res) =>{
     const userid=req.userid
     const todo=await TodoModel.find({userID:userid})
     res.json({"todo":todo})
    
 })  
 
+app.delete("/todo",auth,async(req,res) =>{
+    const todoid = req.body.todoid;
+
+    if (!todoid) {
+        return res.status(400).json({ msg: "Todo ID is required in body" });
+    }
+
+    try {
+        const result = await TodoModel.deleteOne({ _id: todoid });
+
+        if (result.deletedCount === 0) {
+            return res.status(404).json({ msg: "Todo not found or already deleted" });
+        }
+
+        return res.status(200).json({ msg: "Todo deleted successfully" });
+    } 
+    catch (err) {
+        console.error("Error deleting todo:", err);
+        return res.status(500).json({ msg: "Server error", error: err.message });
+    }
+}
+)
 
 
 

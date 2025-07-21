@@ -84,17 +84,50 @@ function updatetodo(){
 }
 
 
-function deletetodo(){
+async function deletetodo(todoitem){
+    await axios.delete('/todo',
+        {
+            headers: {
+                token: localStorage.getItem("token")
+            },
 
+            data: {
+                todoid: todoitem._id
+            }
+        })
+
+        .then(res => {
+            console.log(res.data.msg);
+            render();
+        })
+
+        .catch(err => {
+            console.error("Delete failed:", err.response?.data || err.message);
+        }
+        )
 }
+
+
 
 function marktodo(){
 
 
 }
 
-function createcomponent(){
-
+function createcomponent(todoitem){
+    const todotitle=document.createElement("h2")
+    todotitle.innerText=todoitem.title
+    // const tododone=document.createElement("input")
+    // tododone.type="checkbox"
+    // tododone.checked=todoitem.done
+    const tododelete=document.createElement("button")
+    tododelete.innerText="Delete"
+    tododelete.onclick=()=>{
+        deletetodo(todoitem)
+    }
+    const todoitemdiv=document.createElement("div")
+    todoitemdiv.append(todotitle,tododelete)
+    return todoitemdiv
 }
 
 async function render(){
@@ -112,18 +145,7 @@ async function render(){
                 todolist.innerHTML=""
                 for(let i=0;i<todo.length;i++){
                     const todoitem=todo[i]
-                    const todotitle=document.createElement("h2")
-                    todotitle.innerText=todoitem.title
-                    const tododone=document.createElement("input")
-                    tododone.type="checkbox"
-                    tododone.checked=todoitem.done
-                    const tododelete=document.createElement("button")
-                    tododelete.innerText="Delete"
-                    tododelete.onclick=()=>{
-                        deletetodo(todoitem)
-                    }
-                    const todoitemdiv=document.createElement("div")
-                    todoitemdiv.append(todotitle,tododone,tododelete)
+                    const todoitemdiv=createcomponent(todoitem)
                     todolist.append(todoitemdiv)
     
                 } 

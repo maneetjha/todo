@@ -2,7 +2,7 @@ const jwt=require('jsonwebtoken')
 require('dotenv').config();
 const JWT_SECRET = process.env.JWT_SECRET;
 
-function todorelation(req,res,next){
+function auth(req,res,next){
     const authHeader = req.headers.token;
 
    
@@ -22,5 +22,5 @@ function todorelation(req,res,next){
 
 }
 
-module.exports=todorelation
+module.exports=auth
 
