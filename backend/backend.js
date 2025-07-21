@@ -1,12 +1,11 @@
-require('dotenv').config()
+require('dotenv').config();
 const express=require('express')
 const zod =require('zod') 
 const path=require('path')
 const mongoose=require('mongoose')
 const {UserModel, TodoModel} = require("./db/db");
-const mongourl=process.env.MONGO_URl
+const mongourl=process.env.MONGO_URL
 mongoose.connect(mongourl)
-mongoose.connect("mongodb+srv://maneetjha11:maneet%40mdb%401256@cluster0.pifo4om.mongodb.net/todo-app")
 
 const app =express()
 const usercheck = require('./middleware/usercheck');
