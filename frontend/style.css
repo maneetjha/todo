@@ -1,0 +1,132 @@
+   body {
+      margin: 0;
+      padding: 0;
+      background-color: #947bde; 
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      
+    }
+
+    
+    .lightbox {
+      background-color: #b993dd; 
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(200, 130, 130, 0.15);
+      min-width: 400px;
+      max-width: 90%;
+      text-align: center;
+    }
+
+   
+    input {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin: 15px 15px 20px -9px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #6c63ff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #signuptext{
+      display: flex;
+      justify-content: left;
+    }
+
+    #abcd{
+      display: flex;
+      justify-content: left;
+      margin-top: 20px;
+      color: rgb(243, 229, 33);
+    }
+    
+    #abcde{
+      background-color: lightgreen;
+      color: white;
+
+    }
+
+    button:hover {
+      background-color: #554fd8;
+    }
+
+
+
+.todo-container {
+  background-color: #9158e2;
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  min-width: 400px;
+  display: flex;
+  flex-direction: column; 
+  gap: 10px;
+}
+
+
+.todo-title h1 {
+  margin: 0;
+  font-size: 35px;
+  color: #333;
+  text-align: left;
+}
+
+
+.todo-row {
+  display: flex;
+  align-items: center;
+  gap: 15px; 
+  margin-top: 15px;
+}
+
+.todo-row input {
+  padding: 16px 22px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  flex: 1; /* Makes it expand nicely */
+}
+
+.todo-row button {
+  padding: 15px 30px;
+  font-size: 18px;
+  background-color: #6c63ff;
+  color: white;
+  border: 3px solid #6743f7; /* Match input */
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.todo-row button:hover {
+  background-color: #4a42cc;
+}
+
+
+.todo-list {
+  max-height: 300px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.todo-item {
+  background-color: white;
+  padding: 12px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  font-size: 16px;
+}

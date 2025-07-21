@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taskify Frontend</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+    // const token = localStorage.getItem('token');
+    // if (!token) {
+    //     window.location.href = "signin.html";
+    // return;
+    // }else{
+    // }
+        window.onload = function() {
+        render(); 
+        };
+    </script>
+
+</head>
+<body>
+    <div style="position: absolute; top: 20px; right: 25px;">
+        <button onclick="logout()">Logout</button>
+    </div>
+
+
+    <div class="todo-container">
+
+        <div class="todo-title">
+            <h1>Your Todo List:</h1>
+        </div>
+
+        <div class="todo-row">
+            <input type="text" id="todo-box" placeholder="Add a new todo" />
+            <button onclick="addtodo()">Add</button>
+        </div>
+        
+         <div class="todo-list" id="todo-list"></div>
+
+    </div>
+
+
+
+   
+ 
+ 
+
+    
+    <script src="./frontend.js"></script> 
+
+</body>
+</html>
