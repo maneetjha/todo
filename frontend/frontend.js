@@ -52,6 +52,10 @@ async function signin(){
 
 async function addtodo(){
     const todo=document.getElementById("todo-box").value
+    if(todo==""){
+        alert("Todo cannot be empty")
+        return
+    }
     await axios.post('/todo',
         {
             todo:todo,
