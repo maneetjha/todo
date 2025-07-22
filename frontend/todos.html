@@ -7,15 +7,20 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-    // const token = localStorage.getItem('token');
-    // if (!token) {
-    //     window.location.href = "signin.html";
-    // return;
-    // }else{
-    // }
-        window.onload = function() {
-        render(); 
-        };
+    const token = localStorage.getItem('token');
+
+    window.onload = function(){
+        const token = localStorage.getItem('token');
+
+        if (!token) {
+            window.location.href = "signin.html";
+            alert("Please login first")
+            return;
+        
+        }   
+            render();       
+    }
+        
     </script>
 
 </head>

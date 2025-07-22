@@ -7,21 +7,19 @@ async function signup(){
         name:name,
         password:password 
     })
-    .then((response =>{
-            try{
-                alert(response.data)
-                window.location.href="signin.html"
-                
-                }
-            catch(e){
-                alert("Error try again")
-
-            }    
+    .then((response) => {
+        alert(response.data);
+        window.location.href = "signin.html";
+    })
+    .catch((error) => {
+        if (error.response && error.response.data && error.response.data.msg) {
+            alert(error.response.data.msg);
+        } else {
+            alert("Unexpected error. Please try again.");
         }
-        )
-    )
-
-}
+        console.error(error);
+    })
+};
 
 
 

@@ -35,6 +35,7 @@ app.post("/signup",async(req,res) =>{
     const user = req.body;
 
     const result = usersignupschema.safeParse(user); 
+    
     if (!result.success) {
         const error = result.error.issues[0].message;
         return res.status(400).json({ msg: error });
